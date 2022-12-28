@@ -1,0 +1,6 @@
+SOUNDS
+guitar_solo.wav -- https://freesound.org/people/karolist/sounds/370934/
+
+MODELS
+PS5 -- https://www.cgtrader.com/studio17
+bottles -- https://www.cgtrader.com/ed-3d
