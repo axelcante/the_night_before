@@ -15,4 +15,14 @@ public class DialogueManager : MonoBehaviour
     {
         
     }
+
+    public void ToggleInteractButton (bool turnOn)
+    {
+        // Display or hide UI interact prompt here
+    }
+
+    public void ToggleDialogueButton (bool turnOn)
+    {
+        // Display or hide UI dialogue prompt here
+    }
 }
