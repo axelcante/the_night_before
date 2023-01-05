@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     public LayerMask Layer;
 
     [Header("Interface")]
-    public DialogueManager DM;
     public GameObject UIObjectName;
     public TMP_Text UIObjectNameText;
     public GameObject UIInteractPrompt;
@@ -22,32 +21,19 @@ public class Player : MonoBehaviour
     // PRIVATE
     private InteractableObject io;
 
+    private void Awake ()
+    {
+        io = null;
+    }
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update ()
     {
-        if (io) {
-            UIObjectName.SetActive(true);
-            UIObjectNameText.text = io.displayName;
-
-            if (io.hasInteraction) {
-                UIInteractPrompt.SetActive(true);
-                UIInteractionText.text = io.interactMessage;
-
-                if (Input.GetKeyDown(KeyCode.F)) {
-                    io.OnInteract();
-                }
-            }
-        } else {
-            UIObjectName.SetActive(false);
-            UIInteractPrompt.SetActive(false);
-        }
+        HandleUIPrompts();
     }
 
     void FixedUpdate ()
@@ -71,5 +57,22 @@ public class Player : MonoBehaviour
             Debug.DrawRay(RaycastPoint.position, RaycastPoint.forward * maxDistance, Color.green, 0f);
         else
             Debug.DrawRay(RaycastPoint.position, RaycastPoint.forward * maxDistance, Color.red, 0f);
+    }
+
+    private void HandleUIPrompts ()
+    {
+        if (io) {
+            UIObjectName.SetActive(true);
+            UIObjectNameText.text = io.displayName;
+            UIInteractPrompt.SetActive(true);
+            UIInteractionText.text = io.interactMessage;
+
+            if (Input.GetKeyDown(KeyCode.F)) {
+                io.OnInteract();
+            }
+        } else {
+            UIObjectName.SetActive(false);
+            UIInteractPrompt.SetActive(false);
+        }
     }
 }

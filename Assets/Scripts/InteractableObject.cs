@@ -5,21 +5,25 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
+    [Header("Display")]
     public string id;
     public string displayName;
-    public bool hasInteraction;
     public string interactMessage;
+    
+    [Header("Interactions")]
     public Animator Animator;
+    public TextAsset inkJSON;
 
     public void OnInteract ()
     {
         Invoke(id + "Interaction", 0.0f);
     }
 
-    // INTERACTION METHODS
+    #region // INTERACTION METHODS
+
     private void GuitarInteraction ()
     {
-        Debug.Log("I'm a guitar!");
+        DialogueInteraction();
     }
 
     private void DoorBedInteraction ()
@@ -27,9 +31,25 @@ public class InteractableObject : MonoBehaviour
         OpenCloseDoor();
     }
 
-    // GENERAL METHODS
+    private void ClothesInteraction ()
+    {
+        Debug.Log("All my Uniqlo t-shirts are safe.");
+    }
+
+    #endregion // INTERACTION METHODS
+
+    #region // GENERAL METHODS
+
     private void OpenCloseDoor ()
     {
         Animator.SetBool("Open", !Animator.GetBool("Open"));
     }
+
+    private void DialogueInteraction ()
+    {
+        if (!DialogueManager.GetInstance().isDialogueOpen)
+            DialogueManager.GetInstance().StartDialogue(inkJSON);
+    }
+
+    #endregion // GENERAL METHODS
 }

@@ -112,6 +112,10 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			if (DialogueManager.GetInstance().isDialogueOpen) {
+				return;
+			}
+
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
@@ -119,6 +123,9 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
+			if (DialogueManager.GetInstance().isDialogueOpen) {
+				return;
+			}
 			CameraRotation();
 		}
 
