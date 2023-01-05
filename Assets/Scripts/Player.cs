@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Player : MonoBehaviour
     public TMP_Text UIObjectNameText;
     public GameObject UIInteractPrompt;
     public TMP_Text UIInteractionText;
+    public Image BlackScreen;
+
+    [Header("Dialogues")]
+    public TextAsset Start_inkJSON;
 
     // PRIVATE
     private InteractableObject io;
@@ -24,11 +29,13 @@ public class Player : MonoBehaviour
     private void Awake ()
     {
         io = null;
+        BlackScreen.gameObject.SetActive(true);
     }
 
     void Start()
     {
-        
+        //StartCoroutine(FadeFromBlackScreen());
+        DialogueManager.GetInstance().StartDialogue(Start_inkJSON);
     }
 
     void Update ()
@@ -40,6 +47,22 @@ public class Player : MonoBehaviour
     {
         CastInteractionRay();
     }
+
+    //private IEnumerator FadeFromBlackScreen ()
+    //{
+    //    DialogueManager.GetInstance().StartDialogue(Start_inkJSON);
+    //    float time = 0;
+    //    float duration = 5;
+    //    Color currentColor = BlackScreen.color;
+    //    while (time < duration) {
+    //        currentColor.a = Mathf.Lerp(1, 0, time / duration);
+    //        BlackScreen.color = currentColor;
+    //        time += Time.deltaTime;
+    //        yield return null;
+    //    }
+    //    currentColor.a = 0;
+    //    BlackScreen.color = currentColor;
+    //}
 
     private void CastInteractionRay ()
     {

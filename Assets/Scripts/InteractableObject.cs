@@ -21,6 +21,11 @@ public class InteractableObject : MonoBehaviour
 
     #region // INTERACTION METHODS
 
+    private void CeilingInteraction ()
+    {
+        DialogueInteraction();
+    }
+
     private void GuitarInteraction ()
     {
         DialogueInteraction();
