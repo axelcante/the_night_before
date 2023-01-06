@@ -14,7 +14,7 @@ Or is it just the ceiling that's spinning?
 #player
 ...
 #player
-Where is the ceiling??
+Say, where <i>is</i> the ceiling??
 #player
 Good thing it's... what day is this? Sunday?
 #player

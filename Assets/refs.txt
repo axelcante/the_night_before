@@ -1,5 +1,7 @@
 SOUNDS
 guitar_solo.wav -- https://freesound.org/people/karolist/sounds/370934/
+2001: A Space Odyssey Theme -- https://commons.wikimedia.org/w/index.php?search=2001+a+space+odyssey&title=Special:MediaSearch&go=Go&type=audio
+	Richard Strauss (original) / Sascha Ende (Wikimedia Commons)
 
 MODELS
 PS5 -- https://www.cgtrader.com/studio17
