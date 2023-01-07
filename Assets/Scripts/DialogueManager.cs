@@ -79,6 +79,9 @@ public class DialogueManager : MonoBehaviour
     public void ContinueDialogue ()
     {
         if (CurrentStory.canContinue) {
+            Debug.Log(AnimationManager.GetInstance().skyCrazyCond);
+            if (AnimationManager.GetInstance().skyCrazyCond)
+                DialogueText.text.ToUpper();
             DialogueText.text = CurrentStory.Continue();
             if (CurrentStory.currentTags.Count > 0) {
                 ParseStrings(CurrentStory.currentTags);
@@ -110,6 +113,8 @@ public class DialogueManager : MonoBehaviour
             foreach (Choice choice in currentChoices) {
                 ChoiceButtons[index].gameObject.SetActive(true);
                 ChoicesText[index].text = choice.text;
+                if (AnimationManager.GetInstance().skyCrazyCond)
+                    ChoicesText[index].text.ToUpper();
                 index++;
             }
 

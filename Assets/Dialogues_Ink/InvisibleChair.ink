@@ -1,0 +1,6 @@
+#player
+What the...
+#player
+Some sort of invisible object?
+#player
+I have four chairs normally...

@@ -2,10 +2,14 @@ SOUNDS
 guitar_solo.wav -- https://freesound.org/people/karolist/sounds/370934/
 2001: A Space Odyssey Theme -- https://commons.wikimedia.org/w/index.php?search=2001+a+space+odyssey&title=Special:MediaSearch&go=Go&type=audio
 	Richard Strauss (original) / Sascha Ende (Wikimedia Commons)
+techno_beat.mp3 -- Music by ComaStudio from Pixabay
+former_jazz.mp3 -- Music by ComaStudio from Pixabay
+seedy_jazz.mp3 -- Music by ASTROFREQ from Pixabay
+"Look Sharp, Be Sharp" -- Boston Pops, Public domain, via Wikimedia Commons
 
 MODELS
 PS5 -- https://www.cgtrader.com/studio17
 bottles -- https://www.cgtrader.com/ed-3d
 
 2D SPRITES
-
+Contactless Icon - Icons made by LAFS from Flaticon

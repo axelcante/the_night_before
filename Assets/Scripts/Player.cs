@@ -51,9 +51,20 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        PlayerVariables.Add("mug", 0);
+        // "Quest items
+        PlayerVariables.Add("mug", 1);
+        //PlayerVariables.Add("mug", 0);
+        PlayerVariables.Add("sugar", 1);
+        //PlayerVariables.Add("sugar", 0);
+        PlayerVariables.Add("milk", 1);
+        //PlayerVariables.Add("milk", 0);
+        PlayerVariables.Add("beka", 0);
+
+        // Dialogue variables
         PlayerVariables.Add("blackestVoid", 0);
         PlayerVariables.Add("doorBedKey", 0);
+        PlayerVariables.Add("cocoaPowder", 0);
+        PlayerVariables.Add("greg", 0);
 
         //DialogueManager.GetInstance().StartDialogue(Start_inkJSON); // TODO: ACTIVATE BEFORE FINAL RELEASE
     }
@@ -61,6 +72,11 @@ public class Player : MonoBehaviour
     void Update ()
     {
         HandleUIPrompts();
+
+        // Debug
+        if (Input.GetKeyDown(KeyCode.I)) {
+            DebugPlayerVariables();
+        }
     }
 
     void FixedUpdate ()
@@ -94,12 +110,25 @@ public class Player : MonoBehaviour
             UIInteractPrompt.SetActive(true);
             UIInteractionText.text = io.interactMessage;
 
+            if (AnimationManager.GetInstance().skyCrazyCond) {
+                UIObjectNameText.text.ToUpper();
+                UIInteractionText.text.ToUpper();
+            }
+
             if (!DialogueManager.GetInstance().isDialogueOpen && Input.GetKeyDown(KeyCode.F)) {
                 io.OnInteract();
             }
         } else {
             UIObjectName.SetActive(false);
             UIInteractPrompt.SetActive(false);
+        }
+    }
+
+    // DEBUG
+    private void DebugPlayerVariables ()
+    {
+        foreach(KeyValuePair<string, int> variable in PlayerVariables) {
+            Debug.Log("{0}: {1}");
         }
     }
 }
