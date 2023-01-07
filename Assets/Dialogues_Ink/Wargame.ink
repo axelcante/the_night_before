@@ -19,4 +19,4 @@ Soldier 5: My 6? Who's 6?
 Soldier 6: He's talking to me! Focus fire!
 #narrator
 #disable_script
-You feel some slight tingling on your arms and chest.
+You feel some slight prickles on your arms and chest.

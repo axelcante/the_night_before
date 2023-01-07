@@ -146,6 +146,9 @@ public class DialogueManager : MonoBehaviour
         foreach (string tag in tags) {
             string[] tagCommands = tag.Split(':');
             if (tagCommands.Length > 0) {
+                if (tagCommands[0] != "player" && tagCommands[0] != "narrator") {
+                    DialogueText.color = otherColor;
+                }
                 if (tagCommands[0] == "animate") {
                     AnimationManager.GetInstance().Invoke(tagCommands[1], 0f);
                 } else if (tagCommands[0] == "player") {
@@ -167,6 +170,8 @@ public class DialogueManager : MonoBehaviour
                     } else {
                         Debug.LogWarning("Couldn't parse the variable value correctly");
                     }
+                } else {    // other, meaning neither player nor narrator
+                    DialogueText.color = otherColor;
                 }
             }
         }

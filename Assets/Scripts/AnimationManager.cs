@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,12 @@ public class AnimationManager : MonoBehaviour
     public float xPosArmoireClose;
     [Header("BlackestVoid")]
     public AudioSource BlackestVoidAudioSource;
+    [Header("Dressing")]
+    public Animator DressingAnimator;
+    [Header("DoorBed")]
+    public Animator DoorBedAnimator;
+    public Transform DoorBedPosition;
+    public float yPosDoorBed;
 
     #endregion
 
@@ -103,8 +110,7 @@ public class AnimationManager : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        currentPosition = desiredPosition;
-        LiquidPosition.position = currentPosition;
+        LiquidPosition.position = desiredPosition;
         LiquidPosition.gameObject.SetActive(false);
         isAnimating = false;
     }
@@ -125,8 +131,7 @@ public class AnimationManager : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        currentPosition = desiredPosition;
-        DeskPosition.position = currentPosition;
+        DeskPosition.position = desiredPosition;
         DeskPosition.gameObject.SetActive(false);
         isAnimating = false;
     }
@@ -147,11 +152,9 @@ public class AnimationManager : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        currentPosition = desiredPosition;
-        ArmoireDoorPosition.localPosition = currentPosition;
+        ArmoireDoorPosition.localPosition = desiredPosition;
         isAnimating = false;
     }
-
     public void StopBlackestVoidMusic ()
     {
         if (BlackestVoidAudioSource.isPlaying) {
@@ -159,6 +162,35 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
+    public void DressingDrawerAnimations (int int_id) { DressingAnimator.SetInteger("Dressing", int_id); }
+
+    public void DoorShake () { DoorBedAnimator.Play("DoorShake"); }
+    public void OpenCloseDoor () { DoorBedAnimator.SetBool("Open", !DoorBedAnimator.GetBool("Open")); }
+    public void DoorSlideDown () {
+        StartCoroutine(DoorSlideDownCoroutine());
+    }
+    IEnumerator DoorSlideDownCoroutine ()
+    {
+        isAnimating = true;
+        DoorBedAnimator.enabled = false;
+
+        float time = 0f;
+        float duration = 1f;
+        Vector3 currentPosition = DoorBedPosition.localPosition;
+        Vector3 startPosition = currentPosition;
+        Vector3 desiredPosition = new Vector3(currentPosition.x, yPosDoorBed, currentPosition.z);
+        while (time < duration) {
+            currentPosition = Vector3.Lerp(startPosition, desiredPosition, time / duration);
+            DoorBedPosition.localPosition = currentPosition;
+            time += Time.deltaTime;
+            yield return null;
+        }
+        DoorBedPosition.localPosition = desiredPosition;
+        DoorBedPosition.gameObject.SetActive(false);
+        DoorBedAnimator.enabled = true;
+        isAnimating = false;
+    }
+    
     public void Wait3Seconds () { StartCoroutine(WaitSecondsCoroutine(3)); }
     public void Wait5Seconds () { StartCoroutine(WaitSecondsCoroutine(5)); }
     public void Wait10Seconds () { StartCoroutine(WaitSecondsCoroutine(10)); }

@@ -12,7 +12,6 @@ public class InteractableObject : MonoBehaviour
     public string interactMessage;
     
     [Header("Interactions")]
-    public Animator Animator;
     public TextAsset inkJSON;
     public AudioSource AS;
     public AudioClip clip;
@@ -30,7 +29,7 @@ public class InteractableObject : MonoBehaviour
         if (!AS.isPlaying)
             AS.PlayOneShot(clip);
     }
-    private void DoorBed () { OpenCloseDoor(); }
+    private void DoorBed () { DialogueInteractionWithVariable("doorBedKey", Player.GetInstance().PlayerVariables["doorBedKey"], this.gameObject); }
     private void Computer () { DialogueInteraction(this.gameObject); }
     private void CoffeeMug () { DialogueInteraction(this.gameObject); }
     private void DeskButton () { DialogueInteraction(this.gameObject); }
@@ -56,14 +55,14 @@ public class InteractableObject : MonoBehaviour
         }
     }
     private void BedroomBottles () { DialogueInteraction(this.gameObject); }
-    private void Drawer () { Animator.SetInteger("Dressing", int_id); }
+    private void Drawer () { AnimationManager.GetInstance().DressingDrawerAnimations(int_id); }
     private void Wargame () { DialogueInteraction(this.gameObject); }
 
     #endregion // INTERACTION METHODS
 
     #region // GENERAL METHODS
 
-    private void OpenCloseDoor () { Animator.SetBool("Open", !Animator.GetBool("Open")); }
+    
 
     private void DialogueInteraction (GameObject interactableGameObject)
     {

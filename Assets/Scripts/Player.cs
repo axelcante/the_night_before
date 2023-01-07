@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
     {
         PlayerVariables.Add("mug", 0);
         PlayerVariables.Add("blackestVoid", 0);
-        PlayerVariables.Add("dresser", 0);
+        PlayerVariables.Add("doorBedKey", 0);
 
         //DialogueManager.GetInstance().StartDialogue(Start_inkJSON); // TODO: ACTIVATE BEFORE FINAL RELEASE
     }
