@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AnimationManager : MonoBehaviour
@@ -75,6 +76,7 @@ public class AnimationManager : MonoBehaviour
     public Camera MC;
     public Light DL;
     public float drugIntensity;
+    public AudioClip LookSharp;
     public Color[] SkyColors;
     [Header("Ending")]
     public TMP_Text TheEnd;
@@ -203,6 +205,7 @@ public class AnimationManager : MonoBehaviour
     {
         if (BlackestVoidAudioSource.isPlaying) {
             BlackestVoidAudioSource.Stop();
+            DiscAS.Play();
         }
     }
 
@@ -379,6 +382,9 @@ public class AnimationManager : MonoBehaviour
     public void SkyDrugCrazyStart () {
         skyCrazyCond = true;
         DL.intensity = drugIntensity;
+        DiscAS.Stop();
+        DiscAS.clip = LookSharp;
+        DiscAS.Play();
         StartCoroutine(SkyDrugCrazyCoroutine());
     }
     public void SkyDrugCrazyStop () { skyCrazyCond = false; }
@@ -390,11 +396,10 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
-    public void DisplayEndGame () { StartCoroutine(DisplayEndGameCoroutine(false)); }
-    public void FadeEndGame () { StartCoroutine(DisplayEndGameCoroutine(true)); }
-    IEnumerator DisplayEndGameCoroutine (bool toFade)
+    public void EndGame () { StartCoroutine(EndGameCoroutine()); }
+    IEnumerator DisplayEndGameCoroutine (bool fadingIn)
     {
-        if (!toFade) {
+        if (fadingIn) {
             UIPanel.SetActive(false);
             DialoguePanel.SetActive(false);
         }
@@ -403,12 +408,11 @@ public class AnimationManager : MonoBehaviour
 
         float time = 0;
         Color currentColor = TheEnd.color;
-        float targetAlpha = toFade ? 1 : 0;
-        float startAlpha = toFade ? 0 : 1;
+        float targetAlpha = fadingIn ? 1 : 0;
+        float startAlpha = fadingIn ? 0 : 1;
         while (time < 5) {
             currentColor.a = Mathf.Lerp(startAlpha, targetAlpha, time / 5);
             TheEnd.color = currentColor;
-            Debug.Log(TheEnd.color.a);
             time += Time.deltaTime;
             yield return null;
         }
@@ -416,10 +420,16 @@ public class AnimationManager : MonoBehaviour
         TheEnd.color = currentColor;
         isAnimating = false;
 
-        if (toFade) {
+        if (!fadingIn) {
             // RETURN TO MAIN MENU
-            Debug.Log("Main menu!");
+            SceneManager.LoadScene(0);
         }
+    }
+    IEnumerator EndGameCoroutine ()
+    {
+        yield return DisplayEndGameCoroutine(true);
+        yield return WaitSecondsCoroutine(3);
+        yield return DisplayEndGameCoroutine(false);
     }
  
     public void Wait3Seconds () { StartCoroutine(WaitSecondsCoroutine(3)); }

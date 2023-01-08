@@ -17,6 +17,6 @@ Soldier 3: Not right now, you idiot, there's a war going on!
 Soldier 1: What the hell is that thing? Mayday, mayday, reporting giant unidentified lifeform, at your 6!
 Soldier 5: My 6? Who's 6?
 Soldier 6: He's talking to me! Focus fire!
-#narrator
 #disable_script
+#narrator
 You feel some slight prickles on your arms and chest.

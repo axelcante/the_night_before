@@ -65,14 +65,17 @@ public class DialogueManager : MonoBehaviour
         ContinueDialogue();
     }
 
-    public void StartDialogueWithVariable (TextAsset inkJSON, string variableName, int variableValue, GameObject interactableGameObject = null)
+    public void StartDialogueWithVariable (TextAsset inkJSON, string[] variablesName, int[] variablesValue, GameObject interactableGameObject = null)
     {
         CurrentInteractableObject = interactableGameObject;
         CurrentStory = new Story(inkJSON.text);
         isDialogueOpen = true;
         DialoguePanel.SetActive(true);
 
-        CurrentStory.variablesState[variableName] = variableValue;
+        for (int i = 0; i < variablesName.Length; i++) {
+            CurrentStory.variablesState[variablesName[i]] = variablesValue[i];
+        }
+
         ContinueDialogue();
     }
 

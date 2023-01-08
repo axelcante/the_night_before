@@ -46,23 +46,19 @@ public class Player : MonoBehaviour
         instance = this;
 
         io = null;
-        //BlackScreen.gameObject.SetActive(true); // TODO: ACTIVATE BEFORE FINAL RELEASE
-        Color color = BlackScreen.color;
-        color.a = 0;    // TODO: CHANGE BEFORE FINAL RELEASE
-        BlackScreen.color = color;
     }
 
     void Start()
     {
         // "Quest items
-        PlayerVariables.Add("mug", 1);
-        //PlayerVariables.Add("mug", 0);
-        PlayerVariables.Add("sugar", 1);
-        //PlayerVariables.Add("sugar", 0);
-        PlayerVariables.Add("milk", 1);
-        //PlayerVariables.Add("milk", 0);
-        PlayerVariables.Add("beka", 1);
-        //PlayerVariables.Add("beka", 0);
+        //PlayerVariables.Add("mug", 1);
+        PlayerVariables.Add("mug", 0);
+        //PlayerVariables.Add("sugar", 1);
+        PlayerVariables.Add("sugar", 0);
+        //PlayerVariables.Add("milk", 1);
+        PlayerVariables.Add("milk", 0);
+        //PlayerVariables.Add("beka", 1);
+        PlayerVariables.Add("beka", 0);
 
         // Dialogue variables
         PlayerVariables.Add("blackestVoid", 0);
@@ -70,7 +66,7 @@ public class Player : MonoBehaviour
         PlayerVariables.Add("cocoaPowder", 0);
         PlayerVariables.Add("greg", 0);
 
-        //DialogueManager.GetInstance().StartDialogue(Start_inkJSON); // TODO: ACTIVATE BEFORE FINAL RELEASE
+        DialogueManager.GetInstance().StartDialogue(Start_inkJSON); // TODO: ACTIVATE BEFORE FINAL RELEASE
     }
 
     void Update ()

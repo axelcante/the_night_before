@@ -13304,7 +13304,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -10, y: 10}
-  m_SizeDelta: {x: 25, y: 25}
+  m_SizeDelta: {x: 70, y: 25}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &185203889
 MonoBehaviour:
@@ -38451,6 +38451,7 @@ MonoBehaviour:
   MC: {fileID: 1768151648}
   DL: {fileID: 705507994}
   drugIntensity: 4
+  LookSharp: {fileID: 8300000, guid: d4fbc5341df978e429492280d2426f25, type: 3}
   SkyColors:
   - {r: 1, g: 0.85633945, b: 0, a: 1}
   - {r: 0, g: 1, b: 0.74612737, a: 1}
@@ -59126,7 +59127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -73625,7 +73626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1103530529
 Transform:
   m_ObjectHideFlags: 0
@@ -118516,7 +118517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'F
+  m_text: 'Space / F
 
 '
   m_isRightToLeft: 0
@@ -137458,7 +137459,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095483872}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e6ec49f337fc0dd4d800eb697fad87f3, type: 3}

@@ -17,8 +17,8 @@ Or is it just the ceiling that's spinning?
 Say, where <i>is</i> the ceiling??
 #player
 Good thing it's... what day is this? Sunday?
-#player
 #animate:Clock
+#player
 ...
 #player
 Shit! MONDAY! Gotta get to work!

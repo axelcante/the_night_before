@@ -4,7 +4,7 @@ Jess: Told you this was a bad-
 Judy: Shut up!
 Hector: I already told you I don't have anything on m-
 #narrator
-You feel the bottle referred to as "Jess" staring at your in defiance.
+You feel the bottle referred to as "Jess" staring at you in defiance.
 Jess: Can we 'elp ya, mate?
 Tim: Best be on your way.
 Judy: Ain't nothing to see here.
@@ -18,7 +18,7 @@ What's going on here?
 Judy: None of your business, that's what.
 Hector: *muffled whimpering*
 #player
-This carton of milk doesn't seem like it's having a particularly nice time.
+Well, this carton of milk doesn't seem like it's having a particularly nice time.
 #narrator
 The three bottles stare at each other.
 Tim: He's... here by his own free will.
@@ -38,6 +38,8 @@ Judy: Pfff.
 Jess: Whatever. Let's bounce.
 Tim: You best watch your back.
 #animate:LivingRoomBottlesSlideDown
+#narrator
+...
 #narrator
 Before disappearing, "Tim" makes a knife gesture to his throat.
 Hector: Oh I can't tell you how glad I am you happened by!

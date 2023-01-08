@@ -18,7 +18,7 @@ Penelope: And I thought my son was the worst adolescence could do...
 === MET_GREG ===
     + [You're Greg's mum??]
         -> CHALLENGE
-    + [Say nothing]
+    + [(Say nothing)]
         -> CONTINUE
 -> DONE
 

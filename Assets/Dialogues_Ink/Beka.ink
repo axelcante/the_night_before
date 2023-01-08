@@ -1,4 +1,5 @@
 VAR questItems = 0
+VAR cocoa = 0
 VAR name = ""
 
 -> MAIN
@@ -87,7 +88,7 @@ Beka: Gotta put a name on the mug. What's your name?
 Beka: ...
 #animate:FillCoffee
 Beka: ...
-Beka: {name}! {name}
+Beka: {name}! {name}!
 Beka: ...
 Beka: {name}, last call before I throw your coffee away!
 #player
@@ -100,7 +101,23 @@ Yeah... thanks.
 (Finally. The coffee.)
 #animate:FadeToBlack
 #narrator
-With trembling anticipation, you but the "sugar" and milk in your coffee.
+With trembling anticipation, you put the "sugar" and milk in your coffee.
+{
+    - cocoa == 0:
+        -> FINAL
+    - else:
+        -> COCOA
+}
+-> END
+
+=== COCOA ===
+#narrator
+You even add the "cocoa" that Greg (the toilet) gave you earlier.
+#narrator
+Because why the hell not?
+-> FINAL
+
+=== FINAL ===
 #narrator
 Without taking the time to properly mix all the ingredients, you drink it all in one go.
 #narrator

@@ -24,9 +24,7 @@ And the rest, as they say, is history.
 #animate:Wait3Seconds
 #narrator
 You were fired.
-#animate:DisplayEndGame
-#animate:Wait3Seconds
-#animate:FadeEndGame
+#animate:EndGame
 -> END
 
 === CANT_END ===

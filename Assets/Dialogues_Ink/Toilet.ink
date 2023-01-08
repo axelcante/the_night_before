@@ -2,6 +2,7 @@
 
 === MAIN ===
 
+#variable:greg=1
 #player
 (Not very practical.)
 Greg: *snifles*
@@ -43,7 +44,7 @@ Anything in particular you wanna talk about?
 Greg: Where do I even start?
 Greg: My mother... she keeps telling me I'm <i>piss</i> poor at everything I do...
 Greg: My father never gave a <i>crap</i> about us, left when I was still a display unit...
-Greg: My best friend is sick and the doctor's don't know what it is... turned him upside down!
+Greg: My best friend is sick and the doctors don't know what it is... turned him upside down!
 Greg: Life is just all turning to <i>shit</i>, you know?
 #player
 Oh man, I feel you... brother (?).
