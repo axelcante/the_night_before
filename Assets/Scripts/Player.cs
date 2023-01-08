@@ -47,6 +47,9 @@ public class Player : MonoBehaviour
 
         io = null;
         //BlackScreen.gameObject.SetActive(true); // TODO: ACTIVATE BEFORE FINAL RELEASE
+        Color color = BlackScreen.color;
+        color.a = 0;    // TODO: CHANGE BEFORE FINAL RELEASE
+        BlackScreen.color = color;
     }
 
     void Start()
@@ -58,7 +61,8 @@ public class Player : MonoBehaviour
         //PlayerVariables.Add("sugar", 0);
         PlayerVariables.Add("milk", 1);
         //PlayerVariables.Add("milk", 0);
-        PlayerVariables.Add("beka", 0);
+        PlayerVariables.Add("beka", 1);
+        //PlayerVariables.Add("beka", 0);
 
         // Dialogue variables
         PlayerVariables.Add("blackestVoid", 0);
@@ -105,15 +109,11 @@ public class Player : MonoBehaviour
     private void HandleUIPrompts ()
     {
         if (io) {
+            bool scc = AnimationManager.GetInstance().skyCrazyCond;
             UIObjectName.SetActive(true);
-            UIObjectNameText.text = io.displayName;
+            UIObjectNameText.text = scc ? io.displayName.ToUpper() : io.displayName;
             UIInteractPrompt.SetActive(true);
-            UIInteractionText.text = io.interactMessage;
-
-            if (AnimationManager.GetInstance().skyCrazyCond) {
-                UIObjectNameText.text.ToUpper();
-                UIInteractionText.text.ToUpper();
-            }
+            UIInteractionText.text = scc ? io.interactMessage.ToUpper() : io.interactMessage;
 
             if (!DialogueManager.GetInstance().isDialogueOpen && Input.GetKeyDown(KeyCode.F)) {
                 io.OnInteract();

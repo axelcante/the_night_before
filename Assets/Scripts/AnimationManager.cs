@@ -45,6 +45,8 @@ public class AnimationManager : MonoBehaviour
     [Header("Toilet")]
     public Transform ToiletPosition;
     public float yPosToilet;
+    [Header("DoorBath")]
+    public Animator DoorBathAnimator;
     [Header("BathroomSink")]
     public Transform SugarPosition;
     public float yPosSugar;
@@ -74,6 +76,10 @@ public class AnimationManager : MonoBehaviour
     public Light DL;
     public float drugIntensity;
     public Color[] SkyColors;
+    [Header("Ending")]
+    public TMP_Text TheEnd;
+    public GameObject UIPanel;
+    public GameObject DialoguePanel;
 
     #endregion
 
@@ -248,6 +254,8 @@ public class AnimationManager : MonoBehaviour
         isAnimating = false;
     }
 
+    public void DoorBath () { DoorBathAnimator.Play("BathroomDoorAnim"); }
+
     public void SugarSlideUp () { StartCoroutine(SugarSlideUpCoroutine()); }
     public void BathroomSinkWaterSlideDown () { StartCoroutine(BathroomSinkWaterSlideDownCoroutine()); }
     IEnumerator SugarSlideUpCoroutine ()
@@ -382,6 +390,38 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
+    public void DisplayEndGame () { StartCoroutine(DisplayEndGameCoroutine(false)); }
+    public void FadeEndGame () { StartCoroutine(DisplayEndGameCoroutine(true)); }
+    IEnumerator DisplayEndGameCoroutine (bool toFade)
+    {
+        if (!toFade) {
+            UIPanel.SetActive(false);
+            DialoguePanel.SetActive(false);
+        }
+
+        isAnimating = true;
+
+        float time = 0;
+        Color currentColor = TheEnd.color;
+        float targetAlpha = toFade ? 1 : 0;
+        float startAlpha = toFade ? 0 : 1;
+        while (time < 5) {
+            currentColor.a = Mathf.Lerp(startAlpha, targetAlpha, time / 5);
+            TheEnd.color = currentColor;
+            Debug.Log(TheEnd.color.a);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        currentColor.a = targetAlpha;
+        TheEnd.color = currentColor;
+        isAnimating = false;
+
+        if (toFade) {
+            // RETURN TO MAIN MENU
+            Debug.Log("Main menu!");
+        }
+    }
+ 
     public void Wait3Seconds () { StartCoroutine(WaitSecondsCoroutine(3)); }
     public void Wait5Seconds () { StartCoroutine(WaitSecondsCoroutine(5)); }
     public void Wait10Seconds () { StartCoroutine(WaitSecondsCoroutine(10)); }

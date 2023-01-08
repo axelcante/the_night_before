@@ -92,6 +92,16 @@ public class InteractableObject : MonoBehaviour
 
         DialogueInteractionWithVariable("questItems", questItemCount, this.gameObject);
     }
+    private void DoorBath () { DialogueInteraction(this.gameObject); }
+    private void FinalDoor () {
+        int questItemCount =
+            Player.GetInstance().PlayerVariables["milk"] +
+            Player.GetInstance().PlayerVariables["mug"] +
+            Player.GetInstance().PlayerVariables["sugar"] +
+            Player.GetInstance().PlayerVariables["beka"];
+
+        DialogueInteractionWithVariable("questItems", questItemCount, this.gameObject);
+    }
 
     #endregion // INTERACTION METHODS
 
